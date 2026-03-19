@@ -1,0 +1,59 @@
+{
+	"comment": "AppD component config",
+	"$schema": "../../../node_modules/@finsemble/finsemble-core/configs/schemas/fileBasedSchemas/appsConfigFile.schema.json",
+	"apps": [
+		{
+			"appId": "FDC3 Home HTML",
+			"name": "FDC3 Home HTML",
+			"type": "web",
+			"details": {
+				"url": "https://fdc3.finos.org/"
+			},
+			"hostManifests": {
+				"Finsemble": {
+					"window": {
+						"width": 800,
+						"height": 600,
+						"options": {
+							"minWidth": 175
+						}
+					}
+				}
+			}
+		},
+		{
+			"appId": "WpfExampleApp",
+			"name": "Wpf Example App",
+			"type": "native",
+			"details": {
+				"path": "<PROJECT_ROOT>\\ExampleApps\\WpfApp\\bin\\Debug\\WpfApp.exe",
+				"arguments": "containerImplPath=<PROJECT_ROOT>\\ContainerLibraries\\Container.Impl\\bin\\Debug\\Container.Impl.dll"
+			},
+			"hostManifests": {
+				"Finsemble": {
+					"window": {
+						"width": 500,
+						"height": 350
+					}
+				}
+			}
+		},
+		{
+			"appId": "WinformExampleApp",
+			"name": "Winform Example App",
+			"type": "native",
+			"details": {
+				"path": "<PROJECT_ROOT>\\ExampleApps\\WinformApp\\bin\\Debug\\WinformApp.exe",
+				"arguments": "containerImplPath=<PROJECT_ROOT>\\ContainerLibraries\\Container.Impl\\bin\\Debug\\Container.Impl.dll"
+			},
+			"hostManifests": {
+				"Finsemble": {
+					"window": {
+						"width": 500,
+						"height": 350
+					}
+				}
+			}
+		}
+	]
+}
