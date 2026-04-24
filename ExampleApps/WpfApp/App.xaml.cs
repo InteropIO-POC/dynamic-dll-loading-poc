@@ -28,7 +28,7 @@ namespace WpfApp
 			try
 			{
 				_mainWindow = new MainWindow(e.Args);
-			_mainWindow.Show();
+				_mainWindow.Show();
 			}
 			catch (Exception ex)
 			{

@@ -14,8 +14,7 @@ namespace Container
 			remove { _inner.Connected -= value; }
 		}
 
-		public IWindowClient WindowClient => _inner.WindowClient;
-		public IFDC3Client FDC3Client => _inner.FDC3Client;
+		public IClientsManager Clients => _inner.Clients;
 
 		private readonly IContainer _inner;
 
@@ -44,6 +43,11 @@ namespace Container
 		public void Initialize()
 		{
 			_inner.Initialize();
+		}
+
+		public void Dispose()
+		{
+			_inner?.Dispose();
 		}
 
 		// Parses containerImplPath=<full dll path> from args.

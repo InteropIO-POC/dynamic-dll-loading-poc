@@ -31,14 +31,14 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="fdc3.ioConnectNET, Version=1.21.0.0, Culture=neutral, PublicKeyToken=dbb353f1544d18d3, processorArchitecture=MSIL">
-      <HintPath>..\packages\fdc3.io.Connect.NET.1.21.0.0\lib\net45\fdc3.ioConnectNET.dll</HintPath>
+    <Reference Include="fdc3.ioConnectNET, Version=1.25.0.0, Culture=neutral, PublicKeyToken=dbb353f1544d18d3, processorArchitecture=MSIL">
+      <HintPath>..\packages\fdc3.io.Connect.NET.1.25.0.0\lib\net45\fdc3.ioConnectNET.dll</HintPath>
     </Reference>
-    <Reference Include="Finsemble, Version=9.10.10.0, Culture=neutral, PublicKeyToken=9df516fcbc4ebe73, processorArchitecture=MSIL">
-      <HintPath>..\packages\Finsemble.9.10.10\lib\net452\Finsemble.dll</HintPath>
+    <Reference Include="Finsemble, Version=10.2.0.0, Culture=neutral, PublicKeyToken=9df516fcbc4ebe73, processorArchitecture=MSIL">
+      <HintPath>..\packages\Finsemble.10.2.0\lib\net452\Finsemble.dll</HintPath>
     </Reference>
-    <Reference Include="ioConnectNET, Version=1.37.0.0, Culture=neutral, PublicKeyToken=dbb353f1544d18d3, processorArchitecture=MSIL">
-      <HintPath>..\packages\io.Connect.NET.1.37.0.0\lib\net45\ioConnectNET.dll</HintPath>
+    <Reference Include="ioConnectNET, Version=1.45.0.0, Culture=neutral, PublicKeyToken=dbb353f1544d18d3, processorArchitecture=MSIL">
+      <HintPath>..\packages\io.Connect.NET.1.45.0.0\lib\net45\ioConnectNET.dll</HintPath>
     </Reference>
     <Reference Include="Microsoft.IdentityModel.Logging, Version=6.16.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <HintPath>..\packages\Microsoft.IdentityModel.Logging.6.16.0\lib\net472\Microsoft.IdentityModel.Logging.dll</HintPath>
@@ -138,9 +138,11 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="ClientsManager.cs" />
     <Compile Include="Clients\FDC3Client.cs" />
-    <Compile Include="Clients\WindowClient.cs" />
+    <Compile Include="Clients\WorkspaceClient.cs" />
     <Compile Include="Container.cs" />
+    <Compile Include="FDC3Extensions.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

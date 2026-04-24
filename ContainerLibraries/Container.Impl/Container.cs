@@ -1,20 +1,18 @@
 using Container.Interfaces;
-using DOT.ConfigManager.Common.Config;
+using DOT.AGM.Client;
 using InteropIO;
 using System;
 using System.Diagnostics;
-using System.Threading.Tasks;
 
 namespace Container.Impl
 {
 	public class Container : IContainer
 	{
 		public event EventHandler Connected;
-
-		public IWindowClient WindowClient { get; private set; }
-		public IFDC3Client FDC3Client { get; private set; }
+		public IClientsManager Clients => _clients;
 
 		private readonly Finsemble _fsbl;
+		private ClientsManager _clients = new ClientsManager();
 
 		/// <param name="args">Command prompt arguments</param>
 		/// <param name="input">The object to access your application window. It could be:
@@ -35,20 +33,21 @@ namespace Container.Impl
 				Trace.TraceWarning("Container is already connected.");
 				return;
 			}
-			_fsbl.Connected += (_, e) =>
+			_fsbl.Connected += async (_, e) =>
 			{
-				Trace.TraceInformation("Container is connected.");
+				Trace.TraceInformation("Finsemble is connected.");
 
-				InitializeClients();
+				await _clients.Initialize(_fsbl);
+				Trace.TraceInformation("Clients are initialized.");
+
 				Connected?.Invoke(this, EventArgs.Empty);
 			};
 			_fsbl.Connect();
 		}
 
-		private void InitializeClients()
+		public void Dispose()
 		{
-			WindowClient = new Clients.WindowClient(_fsbl);
-			FDC3Client = new Clients.FDC3Client(_fsbl);
+			_fsbl?.Dispose();
 		}
 	}
 }
