@@ -4,17 +4,16 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{71B43D44-0DD8-4B0E-A4BE-7C16B9DE5C59}</ProjectGuid>
-    <OutputType>Exe</OutputType>
-    <RootNamespace>ConsoleApp</RootNamespace>
-    <AssemblyName>ConsoleApp</AssemblyName>
+    <ProjectGuid>{6D1664A3-94CA-476A-8FF5-1095564924C9}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>FinsembleContainer.Interfaces</RootNamespace>
+    <AssemblyName>FinsembleContainer.Interfaces</AssemblyName>
     <TargetFrameworkVersion>v4.8</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
-    <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
     <Deterministic>true</Deterministic>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
-    <PlatformTarget>AnyCPU</PlatformTarget>
     <DebugSymbols>true</DebugSymbols>
     <DebugType>full</DebugType>
     <Optimize>false</Optimize>
@@ -24,7 +23,6 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
-    <PlatformTarget>AnyCPU</PlatformTarget>
     <DebugType>pdbonly</DebugType>
     <Optimize>true</Optimize>
     <OutputPath>bin\Release\</OutputPath>
@@ -46,30 +44,14 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Program.cs" />
+    <Compile Include="Clients\ILogger.cs" />
+    <Compile Include="Clients\IRouterClient.cs" />
+    <Compile Include="IFinsembleContainer.cs" />
+    <Compile Include="Models\ContainerEventArgs.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="App.config" />
     <None Include="packages.config" />
   </ItemGroup>
-  <ItemGroup>
-    <ProjectReference Include="..\..\FinsembleContainer\FinsembleContainer\FinsembleContainer.csproj">
-      <Project>{E5B1535D-E576-4687-B0CE-B03C9963BF4E}</Project>
-      <Name>FinsembleContainer</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\..\FinsembleContainer\FinsembleContainer.Interfaces\FinsembleContainer.Interfaces.csproj">
-      <Project>{6D1664A3-94CA-476A-8FF5-1095564924C9}</Project>
-      <Name>FinsembleContainer.Interfaces</Name>
-    </ProjectReference>
-  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
-  <Target Name="CopyFinsembleVersionBundles" AfterTargets="Build">
-    <ItemGroup>
-      <V7Files Include="..\..\FinsembleContainer\FinsembleContainer\bin\$(Configuration)\V7\*.*" />
-      <LatestFiles Include="..\..\FinsembleContainer\FinsembleContainer\bin\$(Configuration)\Latest\*.*" />
-    </ItemGroup>
-    <Copy SourceFiles="@(V7Files)" DestinationFolder="$(OutputPath)V7\" />
-    <Copy SourceFiles="@(LatestFiles)" DestinationFolder="$(OutputPath)Latest\" />
-  </Target>
 </Project>

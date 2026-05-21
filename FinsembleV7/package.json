@@ -1,0 +1,14 @@
+{
+	"name": "finsemble",
+	"version": "7.3.10",
+	"scripts": {
+		"postinstall": "node updateAppsJson.js",
+		"dev": "finsemble build --start=true",
+		"start": "finsemble start"
+	},
+	"author": "Finsemble",
+	"license": "SEE LICENSE IN LICENSE",
+	"dependencies": {
+		"@finsemble/finsemble-core": "7.3.10"
+	}
+}

@@ -1,41 +1,44 @@
 # Dynamic DLL Loading POC
 
-A proof-of-concept showing how .NET apps can integrate with Finsemble (and the underlying io.CD) without taking a hard dependency on the platform SDK.
+A proof-of-concept showing how .NET apps can integrate with Finsemble (and the underlying io.CD) without taking a fixed dll version.
 
-The examples [WpfApp](ExampleApps/WpfApp) and [WinformApp](ExampleApps/WinformApp) reference only `Container.dll`, which dynamically loads `Container.Impl.dll` at runtime from a shared location. This means the implementation of Container or Finsemble can be updated independently of the apps.
+The example app [ConsoleApp](ExampleApps/ConsoleApp) references `FinsembleContainer.dll`, which dynamically loads Finsemble version at runtime.  
+This is based on the launch argument `hostType` when Finsemble opens a .Net app:
+- When running Finsemble v7, it does not pass `hostType`, the container loads v7 dll.
+- When running Finsemble v9, it passes `hostType=finsemble`, the container loads v9 dll.
+- When running Finsemble v9 iocd, it passes `hostType=iocd`, the container loads v9 dll, which is compatible to iocd.
 
-See [ContainerLibraries/Container](ContainerLibraries/Container/Container.cs) for how `Container.dll` locates and loads `Container.Impl.dll` at runtime.
+See [FinsembleContainer.cs](FinsembleContainer/FinsembleContainer/FinsembleContainer.cs) for how Finsemble version is resolved at runtime.  
+That projects `FinsembleContainer.Latest` and `FinsembleContainer.V7` contain their own Finsemble dll version, the main project `FinsembleContainer` combines them when building the bin.
 
 ## Getting Started
 
-### 1. Setup Finsemble
-
-```bash
-cd Finsemble && npm install
-```
-
-> This also runs `updateAppsJson.js`, which replaces `<PROJECT_ROOT>` in `apps.json` with the actual path.
-
-To setup for iocd polyfill, additionally run:
-```bash
-npm run setup-iocd
-```
-
-### 2. Build the .NET libraries and apps
+### 1. Build the .NET libraries and apps
 
 Build below solutions in Visual Studio or via CLI:
 
-- `ContainerLibraries/ContainerLibraries.sln`
+- `FinsembleContainer/FinsembleContainer.sln`
 - `ExampleApps/ExampleApps.sln`
 
-### 3. Start Finsemble
+### 2. Start Finsemble v7 (legacy)
 
 ```bash
-cd Finsemble && npm run dev
-```
-or
-```bash
-cd Finsemble && npm run dev-iocd
+cd FinsembleV7
+npm install
+npm run dev
 ```
 
-The example apps (`WpfExampleApp`, `WinformExampleApp`) will be available in the app menu.
+> `npm install` also runs `updateAppsJson.js`, which replaces `<PROJECT_ROOT>` in `apps.json` with the actual path.
+
+App `ConsoleExampleApp` will be available in the app menu.
+
+### 3. Start Finsemble v9 (iocd)
+
+```bash
+cd FinsembleV9
+npm install
+npm run dev-iocd
+```
+> `npm install` also runs `updateAppsJson.js`, which replaces `<PROJECT_ROOT>` in `apps.json` with the actual path.
+
+App `ConsoleExampleApp` will be available in the app menu.

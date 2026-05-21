@@ -1,0 +1,66 @@
+{
+	"comment": "AppD component config",
+	"$schema": "../../../node_modules/@finsemble/finsemble-core/configs/schemas/fileBasedSchemas/appsConfigFile.schema.json",
+	"apps": [
+		{
+			"appId": "ChartIQ Example App",
+			"name": "ChartIQ Example App",
+			"type": "web",
+			"details": {
+				"url": "https://salesdemo-v6.finsemble.com/production/ChartIQ/Finsemble-SD-ChartIQ/technical-analysis-chart.html"
+			},
+			"description": "Visualize market data in the leading FDC3 compliant technical chart.",
+			"hostManifests": {
+				"Finsemble": {
+					"window": {
+						"width": 800,
+						"height": 600,
+						"options": {
+							"minWidth": 175
+						}
+					}
+				}
+			},
+			"interop": {
+				"intents": {
+					"listensFor": {
+						"ViewChart": {
+							"displayName": "View Chart",
+							"contexts": ["fdc3.instrument"]
+						}
+					}
+				}
+			}
+		},
+		{
+			"appId": "FDC3 Home",
+			"name": "FDC3 Home",
+			"type": "web",
+			"details": {
+				"url": "https://fdc3.finos.org/"
+			},
+			"hostManifests": {
+				"Finsemble": {
+					"window": {
+						"width": 800,
+						"height": 600,
+						"options": {
+							"minWidth": 175
+						}
+					}
+				}
+			}
+		},
+		{
+			"appId": "ConsoleExampleApp",
+			"name": "Console Example App",
+			"hostManifests": {
+				"Finsemble": {
+					"window": { "windowType": "native" }
+				}
+			},
+			"type": "native",
+			"details": { "path": "<PROJECT_ROOT>\\ExampleApps\\ConsoleApp\\bin\\Debug\\ConsoleApp.exe" }
+		}
+	]
+}
