@@ -52,66 +52,15 @@
 			}
 		},
 		{
-			"appId": "WpfExampleApp",
-			"name": "Wpf Example App",
-			"type": "native",
-			"details": {
-				"path": "<PROJECT_ROOT>\\ExampleApps\\WpfApp\\bin\\Debug\\WpfApp.exe",
-				"arguments": "containerImplPath=<PROJECT_ROOT>\\ContainerLibraries\\Container.Impl\\bin\\Debug\\Container.Impl.dll"
-			},
+			"appId": "ConsoleExampleApp",
+			"name": "Console Example App",
 			"hostManifests": {
 				"Finsemble": {
-					"component": {
-						"singleton": true
-					},
-					"window": {
-						"options": { "isEvergreen": true },
-						"width": 425,
-						"height": 500
-					}
+					"window": { "windowType": "native" }
 				}
 			},
-			"interop": {
-				"intents": {
-					"listensFor": {
-						"TestNative": {
-							"displayName": "Test Native",
-							"contexts": ["fdc3.instrument"]
-						}
-					}
-				}
-			}
-		},
-		{
-			"appId": "WinformExampleApp",
-			"name": "Winform Example App",
 			"type": "native",
-			"details": {
-				"path": "<PROJECT_ROOT>\\ExampleApps\\WinformApp\\bin\\Debug\\WinformApp.exe",
-				"arguments": "containerImplPath=<PROJECT_ROOT>\\ContainerLibraries\\Container.Impl\\bin\\Debug\\Container.Impl.dll"
-			},
-			"hostManifests": {
-				"Finsemble": {
-					"component": {
-						"singleton": true
-					},
-					"window": {
-						"options": { "isEvergreen": true },
-						"width": 425,
-						"height": 500
-					}
-				}
-			},
-			"interop": {
-				"intents": {
-					"listensFor": {
-						"TestNative": {
-							"displayName": "Test Native",
-							"contexts": ["fdc3.instrument"]
-						}
-					}
-				}
-			}
+			"details": { "path": "<PROJECT_ROOT>\\ExampleApps\\ConsoleApp\\bin\\Debug\\ConsoleApp.exe" }
 		}
 	]
 }
